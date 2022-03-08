@@ -12,12 +12,10 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class UserController {
 
-    private Store list = new Store();
-
     @GetMapping("/listUsers")
     public List<User> getList()
     {
-        return list.getListUser();
+        return Store.listUser;
     }
 
 }

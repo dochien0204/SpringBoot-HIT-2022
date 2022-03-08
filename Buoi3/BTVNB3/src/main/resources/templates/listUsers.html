@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List User</title>
+</head>
+<body>
+<div class="container">
+    <h1>List User</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>User name </th>
+            <th>Password</th>
+            <th>Full Name</th>
+        </tr>
+        <tr th:each = "user : ${list}">
+            <td th:utext ="${user.id}"></td>
+            <td th:utext = "${user.username}"></td>
+            <td th:utext = "${user.password}"></td>
+            <td th:utext = "${user.fullName}"></td>
+        </tr>
+    </table>
+
+    <a th:href="@{/api/v1/listUsers}">View User by Json</a>
+</div>
+
+</body>
+</html>

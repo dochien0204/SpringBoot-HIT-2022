@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class AuthController {
 
     @GetMapping(value = "/login")
-    public String login(Model model)
+    public String login()
     {
         return "login";
     }
@@ -19,10 +19,10 @@ public class AuthController {
     @PostMapping("/listUsers")
     public String listUsers(@ModelAttribute User user, Model model)
     {
-        Store list = new Store();
-        if(list.check(user))
+
+        if(Store.check(user))
         {
-            model.addAttribute("list", list.getListUser());
+            model.addAttribute("list", Store.listUser);
             return "listUsers";
         }
         return "redirect:login";

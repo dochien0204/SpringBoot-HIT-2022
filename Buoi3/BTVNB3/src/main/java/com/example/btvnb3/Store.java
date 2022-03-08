@@ -25,7 +25,7 @@ public class Store {
         Store.listUser = listUser;
     }
 
-    public boolean check(User user)
+    public static boolean check(User user)
     {
         for(User u : listUser)
         {

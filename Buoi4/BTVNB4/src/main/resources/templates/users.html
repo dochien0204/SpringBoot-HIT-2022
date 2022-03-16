@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        th {
+            border: 1px solid black;
+        }
+        td {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+        <h1>Danh sách Users</h1>
+        <table>
+            <tr>
+                <th>User name </th>
+                <th>Password</th>
+                <th>Full Name</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th colspan="2">Delete or Edit</th>
+            </tr>
+            <tr th:each = "user : ${users}">
+                <td th:utext = "${user.username}"></td>
+                <td th:utext = "${user.password}"></td>
+                <td th:utext = "${user.fullName}"></td>
+                <td th:utext = "${user.getCreated()}"></td>
+                <td th:utext = "${user.getUpdated()}"></td>
+                <td>
+                    <a th:href="@{'/edit-user/' + ${user.getId()}}">Edit</a>
+                </td>
+                <td>
+                    <a th:href="@{'/delete-user/' + ${user.getId()}}"
+                            onclick ="if(!(confirm('Are you sure want to delete this customer ?'))) return false">Delete</a>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <a th:href="@{/api/users}">View All User By Json</a>
+        <br>
+        <a th:href="@{/create-form}">Create New Users</a>
+</body>
+</html>

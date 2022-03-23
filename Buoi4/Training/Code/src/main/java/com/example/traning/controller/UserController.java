@@ -20,7 +20,7 @@ public class UserController {
     @GetMapping
     public ResponseEntity<?> getAllUser()
     {
-        return ResponseEntity.status(200).body(userRepository.findAll());
+        return ResponseEntity.status(200).body(userRepository.findAllByPasswordContaining2());
     }
 
 

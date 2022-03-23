@@ -36,7 +36,16 @@ public class UrlLinkServicesImp implements UrlLinkServices {
 
       url.setOriginalLink(urlLinkDTO.getOriginalLink());
       String encode = encodeUrl();
-      
+      int i = 0;
+      while (i < urls.size())
+      {
+          if(urls.get(i).getShortedLink().compareTo(encode) == 0)
+          {
+              encode = encodeUrl();
+              i = 0;
+          }
+           i++;
+      }
       url.setShortedLink(encode);
       urlLinkRepository.save(url);
       return "Short link thành công";
